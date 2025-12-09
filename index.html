@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        /* TO DO LIST !!!!
+        fill in info
+        
+        */
+
+        @font-face {
+            font-family: 'Lucida Fax';
+            src:
+            url("font/LucidaFax.woff2") format('woff2'),
+            url("font/LucidaFax.woff") format('woff'),
+            url("font/Lucida Fax Regular.ttf") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+                @font-face {
+            font-family: 'Lucida Fax';
+            src:
+            url("font/LucidaFax-Italic.woff2") format('woff2'),
+            url("font/LucidaFax-Italic.woff") format('woff'),
+            url("font/Lucida Fax Italic.ttf") format('truetype');
+            font-weight: normal;
+            font-style: italic;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Lucida Fax", "Trebuchet MS", Helvetica, sans-serif;
+        }
+        
+
+        body {
+            min-height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            width: 100%;
+            min-height: 100vh;
+            grid-template-areas: "nav    nav"
+                                "content   content";
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-rows: 60px auto;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        nav {
+            grid-area: nav;
+            background-image: linear-gradient(to bottom right, black, purple);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 0 0 10px;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .left-nav {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 0 0 auto; /* Don't grow or shrink */
+        }
+
+        .icon {
+            max-height: 50px;
+            width: auto;
+        }
+
+        .right-nav {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+
+        .nav-tabs {
+            display: flex;
+            gap: 0;
+            justify-content: flex-end;
+        }
+
+        .tab-button {
+            color: white;
+            background: none;
+            border: none;
+            padding: 0 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        .tab-button:hover {
+            background-color: #00000020;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .tab-button.active {
+            background-color: #00000040;
+            border-bottom: 2px solid white;
+        }
+
+        .content-area {
+            grid-area: content;
+            padding: 20px;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* About Me Layout - Two Columns */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .left-section {
+            margin-left: 20px;
+        }
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .img-cont {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .image-subtitle {
+            margin-top: 15px;
+            text-align: center;
+            max-width: 100%; /* Change from 500px to 100% */
+            width: 100%; /* Add this */
+        }
+
+        /* Projects Layout - Two Columns */
+        .projects-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .project-item {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .video {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 300px;
+        }
+
+        iframe {
+            display: block;
+        }
+
+        /* Contact Layout - Single Column */
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-links {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .contact-link {
+            display: block;
+            padding: 15px;
+            margin: 10px 0;
+            background: #f5f5f5;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+        .contact-link:hover {
+            background: #e0e0e0;
+        }
+
+        @media (max-width: 700px) {
+    .tab-button {
+        padding: 0 15px;
+        font-size: 14px;
+    }
+    
+    .left-nav h2 {
+        font-size: 16px;
+    }
+}
+
+/* mobile CSS */
+
+@media (max-width: 550px) {
+    .tab-button {
+        padding: 0 10px;
+        font-size: 13px;
+    }
+    
+    .left-nav h2 {
+        font-size: 14px;
+    }
+    
+    .icon {
+        max-height: 35px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="left-nav">
+                <img src="assets/duck.png" alt="A yellow rubber duck facing to the left." class="icon">
+                <h2>Sans0phobic</h2>
+            </div>
+            <div class="right-nav">
+                <div class="nav-tabs">
+<button class="tab-button active" onclick="showTab(event, 'about')">About Me</button>
+<button class="tab-button" onclick="showTab(event, 'projects')">Projects</button>
+<button class="tab-button" onclick="showTab(event, 'contact')">Contact</button>
+                </div>
+            </div>
+        </nav>
+        
+        <main class="content-area">
+            <!-- About Me Tab -->
+            <div id="about" class="tab-content active">
+                <div class="about-content">
+                    <section class="left-section">
+                        <h2>About me</h2>
+                        <p>Game development has been a passion of mine since I became interested in games.  Recently I started persuing it, but I haven't had the time to focus on any personal projects.  Playing games has been my way of fun for most of my life; they are my biggest interest, and my biggest goal is to translate what I have inside my head onto a screen.</p>
+                    </section>
+                    <section class="right-section">
+                        <img src="https://i.pinimg.com/1200x/d6/42/b5/d642b5236035c1c9612502eecd33c81f.jpg" alt="The characters from Dead by Daylight Legion and Ghostface both facing forward. Left: Legion - a person with a white mask with painted eyes and smile wearing a hoodie has hand up like a highfive. Right: Ghostface - a person with a long mask with saddened hollowed eyes, hollowed nostrils, and a long hollowed mouth with all black attire and a black hood, holding a half heart against Legion's hand." class="img-cont">
+                        <div class="image-subtitle">
+                           <!-- <p>subtitle</p> -->
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Projects Tab -->
+            <div id="projects" class="tab-content">
+                <div class="projects-content">
+                    <div>
+                        <div class="project-item">
+                            <h3>Project 1</h3>
+                             <div class="video">
+                            <iframe
+src="https://youtube.com/embed/CJhE4BYcjh0?si=qciC560eeqQtWvKt?controls=1" class="video">
+</iframe></div>
+                            <p>
+                                Git Repo:
+                                <a href="https://github.com/Sans0phobic/Boss-Rush">github.com</a>
+                            </p>
+                            <p>
+                                Itch.io:
+                            <a href="">itch.io</a>
+                            </p>
+                        </div>
+                        <div class="project-item">
+                            <h3>Project 2</h3>
+                            <div class="video">
+                            <iframe
+src="https://youtube.com/embed/b4VnMDg8mSc?si=CDCwChbvxPUIlOVo?controls=1" class="video">
+</iframe></div>
+                            <p>
+                                Git Repo:
+                                <a href="https://github.com/Sans0phobic/minimum-viable-product">github.com</a>
+                            </p>
+                            <p>
+                                Itch.io:
+                            <a href="">itch.io</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>My Projects</h2>
+                        <br/>
+                        <h3>Project 1</h3>
+                        <p><strong>Process</strong> - I first reviewed the code in the project I was editing & adding my own on to, then created a state machine to guide each action the boss character could do.</p>
+<p><strong>Tools Used</strong> - Unity</p>
+<p><strong>Challenges</strong> - Time</p>
+<br/>
+<h3>Project 2</h3>
+<p><strong>Process</strong> - I imported placeholder objects to use for visuals, then created a basic movement system.</p>
+<p><strong>Tools Used</strong> - Godot, Aseprite</p>
+<p><strong>Challenges</strong> - Creating a prototype in godot while learning it for the first time</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Tab -->
+            <div id="contact" class="tab-content">
+                <div class="contact-content">
+                    <h2>Contact Me</h2>
+                    <div class="contact-links">
+                        <a href="https://github.com/Sans0phobic" class="contact-link">Github: Sans0phobic</a>
+                        <a href="https://sansophobic.itch.io/" class="contact-link">Itch.io: Sansophobic</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+    // Save the current tab to localStorage
+    function saveCurrentTab(tabName) {
+        localStorage.setItem('currentTab', tabName);
+    }
+    
+    // Load and show the saved tab when page loads
+    function loadSavedTab() {
+        const savedTab = localStorage.getItem('currentTab');
+        if (savedTab) {
+            // Hide all tabs
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show the saved tab and activate its button
+            document.getElementById(savedTab).classList.add('active');
+            
+            // Find and activate the corresponding button
+            const activeButton = document.querySelector(`.tab-button[onclick*="${savedTab}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+    }
+    
+    // Modified showTab function to save the tab
+    function showTab(event, tabName) {
+        // Hide all tabs
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // Remove active class from all buttons
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.classList.remove('active');
+        });
+
+        // Show the selected tab and activate its button
+        document.getElementById(tabName).classList.add('active');
+        event.currentTarget.classList.add('active');
+        
+        // Save the current tab
+        saveCurrentTab(tabName);
+    }
+    
+    // Load the saved tab when page loads
+    window.addEventListener('DOMContentLoaded', loadSavedTab);
+</script>
+</body>
+
+</html>
