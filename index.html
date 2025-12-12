@@ -269,7 +269,7 @@
         <nav>
             <div class="left-nav">
                 <img src="assets/duck.png" alt="A yellow rubber duck facing to the left." class="icon">
-                <h2>Sans0phobic</h2>
+                <h2>Dane Fournier</h2>
             </div>
             <div class="right-nav">
                 <div class="nav-tabs">
@@ -290,7 +290,7 @@
 <br/>
 <p>My first steps towards game development were learning how to program.  I learned the fundamentals of programming in a robotics class in middle school, learned the foundation of C# a year later attempting my first prototype in Unity, kept building small prototypes,  then took a computer science class where I learned Java in my last year of high school, & finally formally learned Java, C++, & C# at Lonestar College.</p>
 <br/>
-<p>Beyond programming I’ve also taken Graphic Design & Animation classes at the high school & college level respectively, as well as learning basic 3D modelling with Blender.  I learned how to do all of these things because I wanted to understand at least some of the work that goes into every aspect of the creation of my favorite form of art.</p>
+<p>Beyond programming I’ve also taken Graphic Design & Animation classes at the high school & college level respectively, as well as learning basic 3D modeling with Blender.  I learned how to do all of these things because I wanted to understand at least some of the work that goes into every aspect of the creation of my favorite form of art.</p>
                     </section>
                     <section class="right-section">
                         <img src="https://i.imgur.com/11iVg1X.jpeg" alt="" class="img-cont">
@@ -313,33 +313,61 @@ src="https://youtube.com/embed/CJhE4BYcjh0?si=qciC560eeqQtWvKt?controls=1" class
 </iframe></div>
                             <p>
                                 Git Repo:
-                                <a href="https://github.com/Sans0phobic/Boss-Rush">Boss Rush</a>
+                                <a href="https://github.com/Sans0phobic/Boss-Rush">Boss Rush Prototype</a>
                             </p>
                         </div>
+
+                        
                         <div class="project-item">
                             <h3>Project 2</h3>
                             <div class="video">
                             <iframe
-src="https://youtube.com/embed/b4VnMDg8mSc?si=CDCwChbvxPUIlOVo?controls=1" class="video">
+src="https://youtube.com/embed/ivGlpg0SY-g?si=Rqc6DBKy6X5jy9Py?controls=1" class="video">
 </iframe></div>
                             <p>
                                 Git Repo:
-                                <a href="https://github.com/Sans0phobic/minimum-viable-product">Minimum Viable Product</a>
+                                <a href="https://github.com/Sans0phobic/StealthGame">Stealth Game Protoype</a>
                             </p>
                         </div>
                     </div>
                     <div>
                         <h2>My Projects</h2>
                         <br/>
-                        <h3>Project 1</h3>
-                        <p><strong>Process</strong> - I first reviewed the code in the project I was editing & adding my own on to, then created a state machine to guide each action the boss character could do.</p>
+                        <h3>Boss Fight Prototype</h3>
+                        <p><strong>Process</strong> -  I first reviewed the code in the project I was editing & adding my own on to, then 
+created a state machine to guide each action the boss character could do.  First I added 
+the idle state, using it as a transition phase between the other states in the state machine.  
+Then I tested the distance between the player & the boss during its animations so when the 
+boss transitioned to its attacks, it would be in range.  Then I added in the attacks & the fight 
+was basically done.  I did not create the scripts for the player, the art assets, or the 
+animations.  All of the programming for the boss was done by me however.</p>
 <p><strong>Tools Used</strong> - Unity</p>
-<p><strong>Challenges</strong> - Time</p>
+<p><strong>Challenges</strong> - This prototype was my first time using a state machine & caused me to be 
+lost at the start on how to accomplish what I normally would using spaghetti code.  After 
+playing with the state machine for a bit & testing how to set up transitions & what to use 
+transitions for, I learned how helpful state machines can be for enemies & players.</p>
+                        
 <br/>
-<h3>Project 2</h3>
-<p><strong>Process</strong> - I imported placeholder objects to use for visuals, then created a basic movement system.</p>
-<p><strong>Tools Used</strong> - Godot, Aseprite</p>
-<p><strong>Challenges</strong> - Creating a prototype in godot while learning it for the first time</p>
+                        
+<h3>Stealth Game Prototype</h3>
+<p><strong>Process</strong> -  I started this project by creating a basic area to test the mechanics I was adding.  
+The area included a blue capsule for the player, a red capsule to act as an enemy, two 
+yellow spheres to act as patrol points, two walls the player could hide behind, & a plane to 
+act as the ground.  I imported a script for the player & set up a character controller to get 
+them working quickly, then started working on the enemy.  I created a state machine so the 
+enemy could transition between patrolling from point to point, investigating when they 
+heard a noise, & chasing the player when they saw them.  While doing this I attached a 
+navmesh agent to the enemy so they could easily move around obstacles in the area.  The 
+enemy uses a ray pointing in the direction of the player to detect walls between it & the 
+player.  If there are none, then the guard is capable of hearing the player.  If the ray is 
+unobstructed & the player is in front of the guard, then they will actively start chasing.</p>
+<p><strong>Tools Used</strong> - Unity</p>
+<p><strong>Challenges</strong> - The two challenges I faced during the creation of this project were learning 
+how to create dot products & learning how to give the enemy a basic memory of the 
+player’s last position.  I solved the first issue by learning more about how dot products work 
+online, & for the second issue I had an invisible game object follow the player when the 
+guard could see or hear them, & then had the game object stop moving when the guard lost 
+line of sight.  </p>
                     </div>
                 </div>
             </div>
@@ -349,8 +377,9 @@ src="https://youtube.com/embed/b4VnMDg8mSc?si=CDCwChbvxPUIlOVo?controls=1" class
                 <div class="contact-content">
                     <h2>Contact Me</h2>
                     <div class="contact-links">
-                        <a href="https://github.com/Sans0phobic" class="contact-link">Github: Sans0phobic</a>
+                        <a href="mailto:dane.fournier@outlook.com">Email: dane.fournier@outlook.com</a>
                         <a href="https://sansophobic.itch.io/" class="contact-link">Itch.io: Sansophobic</a>
+                        <a href="https://github.com/Sans0phobic" class="contact-link">Github: Sans0phobic</a>
                     </div>
                 </div>
             </div>
@@ -419,6 +448,7 @@ src="https://youtube.com/embed/b4VnMDg8mSc?si=CDCwChbvxPUIlOVo?controls=1" class
 
 
 </html>
+
 
 
 
